@@ -1,4 +1,4 @@
-import { ADD_CLASS_FAIL, ADD_CLASS_REQUEST, ADD_CLASS_SUCCESS } from "../constants/classConstant";
+import { ADD_CLASS_FAIL, ADD_CLASS_REQUEST, ADD_CLASS_RESET, ADD_CLASS_SUCCESS } from "../constants/classConstant";
 
 
 export const addClassReducer = (state = {}, action) => {
@@ -17,6 +17,8 @@ export const addClassReducer = (state = {}, action) => {
         loading: false,
         error: action.payload
       }
+    case ADD_CLASS_RESET:
+      return {}
     default:
       return state;
   }

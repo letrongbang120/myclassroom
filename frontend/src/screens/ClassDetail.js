@@ -16,12 +16,11 @@ export default function ClassDetail() {
       }
     }
     func();
-    console.log(course)
   }, [classId]);
 
   return (
     <div>
-      {course.name}
+      <h2>{course.name}</h2>
     </div>
   )
 }

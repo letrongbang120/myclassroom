@@ -31,26 +31,22 @@ export default function Header() {
       <Toolbar>
         <Link to="/" className={classes.typographyStyles}>
           <Typography
-
             variant="h4"
             component="div"
           >
             MyClassroom
           </Typography>
         </Link>
-
-
         {
           userInfo ?
             <div style={{ display: "flex" }}>
               {userInfo.isTeacher &&
-                <Link to="/class/add">
+                <Link to="/classes/add">
                   <Typography >Add Class</Typography>
                 </Link>}
               <Link to="/signin" onClick={signout}>
                 <Typography >{userInfo.name}</Typography>
               </Link>
-
             </div>
             :
             <div style={{ display: "flex" }}>

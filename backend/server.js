@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 
 import classRouter from './routers/classRouter.js'
 import userRouter from './routers/userRouter.js';
+import path from 'path';
 
 const PORT = 8000;
 dotenv.config();
@@ -19,9 +20,14 @@ mongoose.connect(process.env.MONGODB_URL, {
 app.use("/api/classes/", classRouter);
 app.use("/api/users/", userRouter);
 
-app.get("/", (req, res) => {
-  res.send("Hello");
-})
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+);
+// app.get("/", (req, res) => {
+//   res.send("Hello");
+// })
 
 app.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);

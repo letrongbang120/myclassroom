@@ -32,7 +32,6 @@ classRouter.get("/", expressAsyncHandler(async (req, res) => {
 classRouter.get("/:classId", expressAsyncHandler(async (req, res) => {
   try {
     const c = await Class.findById(req.params.classId);
-    console.log(c)
     res.status(200).send(c);
   } catch (error) {
     res.status(404).send({ message: "Class not Found" })

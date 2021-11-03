@@ -1,9 +1,12 @@
 import { Grid } from '@mui/material';
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import ClassItem from '../components/ClassItem';
+import { ADD_CLASS_RESET } from '../constants/classConstant';
 
 export default function HomeScreen() {
+  const dispatch = useDispatch();
   const [listClass, setListClass] = useState([]);
   useEffect(() => {
     const func = async () => {
@@ -15,7 +18,8 @@ export default function HomeScreen() {
       }
     }
     func();
-  }, [])
+    dispatch({ type: ADD_CLASS_RESET });
+  }, [dispatch])
 
   return (
     <Grid container spacing={4} style={{ marginTop: 1 }}>

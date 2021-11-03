@@ -30,11 +30,11 @@ const Component = (props) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispacth(addClass(name, description));
+    dispatch(addClass(name, description));
   }
 
   const classAdd = useSelector(state => state.classAdd);
@@ -42,7 +42,7 @@ const Component = (props) => {
 
   useEffect(() => {
     if (addedClass) {
-      props.history.push("/")
+      props.history.push("/");
     }
   }, [props, addedClass])
 
